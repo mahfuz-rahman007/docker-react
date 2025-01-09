@@ -1,9 +1,9 @@
-name: 'Docker CI'
+name: Docker CI
   on:
     push: 
-       branches: ['master']
+       branches: [master]
     pull_request:
-       branches: ['master']
+       branches: [master]
   
   jobs:
     build:
@@ -12,8 +12,8 @@ name: 'Docker CI'
       steps:
         - uses: actions/checkout@v4
 
-        - name: 'Build The Docker Image'
+        - name: Build The Docker Image
           run: docker build -t mahfuj007/portfolio -f Dockerfile.dev .
 
-        - name: 'Run Tests'
+        - name: Run Tests
           run: docker run -e CI=true mahfuj007/portfolio npm run test
