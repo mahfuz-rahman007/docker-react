@@ -1,19 +1,19 @@
 name: Docker CI
-  on:
-    push: 
-       branches: [master]
-    pull_request:
-       branches: [master]
+on:
+  push: 
+      branches: [master]
+  pull_request:
+      branches: [master]
   
-  jobs:
-    build:
-      runs-on: ubuntu-latest
+jobs:
+  build:
+    runs-on: ubuntu-latest
 
-      steps:
-        - uses: actions/checkout@v4
+    steps:
+      - uses: actions/checkout@v4
 
-        - name: Build The Docker Image
-          run: docker build -t mahfuj007/portfolio -f Dockerfile.dev .
+      - name: Build The Docker Image
+        run: docker build -t mahfuj007/portfolio -f Dockerfile.dev .
 
-        - name: Run Tests
-          run: docker run -e CI=true mahfuj007/portfolio npm run test
+      - name: Run Tests
+        run: docker run -e CI=true mahfuj007/portfolio npm run test
